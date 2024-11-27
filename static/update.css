@@ -1,0 +1,35 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page Background */
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background: linear-gradient(to right, #000000, #6d6e6e); */
+    /* background-image: url("image.png"); */
+    background-image: linear-gradient();
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  
+    color: #333;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    
+}

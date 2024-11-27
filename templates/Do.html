@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* Add some basic styling */
+        .container {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+        .task-input {
+            margin: 20px 0;
+        }
+        .task-list, .todos {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>To-Do List</h1>
+
+    <div class="task-input"> 
+        <input type="text" id="taskInput" placeholder="Add a new task..."> 
+        <button onclick="addTask()">Add</button> 
+    </div> 
+    <ul id="taskList" class="task-list"></ul>
+</div>
+
+<div class="con">
+    <h2>Your Todos</h2>
+    <ul id="todos" class="todos"></ul> 
+</div>
+
+<script>
+    function addTask() {
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('todos');
+        const task = taskInput.value.trim();
+        
+        if (task) {
+            const li = document.createElement('li');
+            li.textContent = task;
+            taskList.appendChild(li);
+            taskInput.value = ''; // Clear the input field
+        } else {
+            alert('Please enter a task');
+        }
+    }
+</script>
+
+</body>
+</html>

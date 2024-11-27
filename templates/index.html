@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block body%}
+    <div class="container">
+        <h1>To-Do List</h1>
+
+        
+        <form method="POST" action="/">
+            <div class="task-input mb-4">
+                <input type="text" id="taskInput" class="mx-2"name="title" placeholder="Add a new task..." required>
+                <input type="text" id="taskDescription" name="desc" placeholder="Add a Description..." required>
+                <button type="submit" class="btn btn-primary mt-2">Add</button>
+            </div>
+        </form>
+        {% if allTodo|length==0 %}
+        <div class="alert alert-dark" role="alert">
+            No Records Currently Available
+          </div>
+        {% else %}
+
+        <h2>Your Todos</h2>
+        <table class="table table-success table-striped">
+            <thead>               <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for todo in allTodo %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.desc }}</td>
+                    <td>{{ todo.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>
+                        <a href= "/update/{{todo.sno}}"<button type="button" class="btn btn-outline-dark btn-sm mx-2" >Update</button>
+                        <a href= "/delete/{{todo.sno}}"<button type="button" class="btn btn-outline-dark btn-sm mx-2">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    {% endblock body %}
+    <script>
+        document.getElementById("taskInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();  // Prevent default form submission
+                document.querySelector("form").submit();  // Submit the form
+            }
+        });
+        document.getElementById("taskDescription").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();  // Prevent default form submission
+                document.querySelector("form").submit();  // Submit the form
+            }
+        });
+    </script>
+    
